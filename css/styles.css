@@ -553,13 +553,36 @@ nav.fixed-nav.scrolled {
 .tv-grid {
   display: grid;
   grid-template-columns: 1fr;
-  background-color: var(--border);
-  gap: 1px; /* Creates clean line dividers */
+  background-color: hsl(0, 0%, 10%);
+  gap: 1px;
 }
 
 @media (min-width: 768px) {
   .tv-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Center grids with fewer than 3 cards */
+.tv-grid--center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: black;
+}
+
+.tv-grid--center .tv-card {
+  flex: 0 0 100%;
+}
+
+@media (min-width: 768px) {
+  .tv-grid--center .tv-card {
+    flex: 0 0 33.333%;
+    border-right: 1px solid hsl(0, 0%, 10%);
+  }
+
+  .tv-grid--center .tv-card:last-child {
+    border-right: none;
   }
 }
 
@@ -1492,4 +1515,58 @@ footer.footer {
     font-size: 1.125rem;
     padding: 1.5rem 5rem;
   }
+}
+
+/* Orange project titles in awards */
+.award-project {
+  color: var(--primary);
+}
+
+/* Smaller hero for Spallas visualizer */
+.project-hero--compact {
+  height: 30vh;
+}
+
+@media (min-width: 768px) {
+  .project-hero--compact {
+    height: 33vh;
+  }
+}
+
+/* Constrain tall/portrait project card images to landscape ratio */
+.project-image-link--landscape {
+  aspect-ratio: 16/9;
+}
+
+.project-image-link--landscape .project-image {
+  height: 100%;
+  object-position: center;
+}
+
+/* Writing section subsection labels */
+.writing-subsection-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  margin-bottom: 1.5rem;
+  margin-top: 3rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Script snippet link */
+.tv-snippet {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 0.4rem;
+  margin-top: 0.25rem;
+  transition: opacity 0.2s ease;
+}
+
+.tv-snippet:hover {
+  opacity: 0.7;
 }
